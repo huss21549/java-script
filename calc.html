@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Operator Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Addition Calculator</h2>
+
+    <div class="space-y-4">
+      <input type="number" id="num1" placeholder="Enter first number"
+        class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+      <input type="number" id="num2" placeholder="Enter second number"
+        class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+      <button onclick="addNumbers()"
+        class="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition">
+        Calculate Sum
+      </button>
+
+      <div id="result" class="text-center text-xl font-medium text-gray-700 mt-4"></div>
+    </div>
+  </div>
+
+  <script>
+    function addNumbers() {
+      var x = parseFloat(document.getElementById("num1").value);
+      var y = parseFloat(document.getElementById("num2").value);
+
+      if (isNaN(x) || isNaN(y)) {
+        document.getElementById("result").innerHTML = "Please enter valid numbers.";
+      } else {
+        var z = x + y;
+        document.getElementById("result").innerHTML = "Result: " + z;
+      }
+    }
+  </script>
+
+</body>
+</html>
