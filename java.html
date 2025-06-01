@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Comments – Learn & Explore</title>
+  <style>
+    :root {
+      --light-bg: #f0f9ff;
+      --light-text: #1a1a1a;
+      --dark-bg: #1e1e2f;
+      --dark-text: #f0f0f0;
+      --primary: #007acc;
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --glass-blur: blur(16px);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: var(--light-bg);
+      color: var(--light-text);
+      transition: all 0.3s ease;
+    }
+
+    body.dark {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+    }
+
+    p, li {
+      font-size: 1.2rem;
+    }
+
+    .button-group {
+      margin-top: 1.5rem;
+    }
+
+    button {
+      padding: 0.6rem 1.2rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--primary);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005b99;
+    }
+
+    .tip-box, .fact-box {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(0, 123, 204, 0.1);
+      border-left: 4px solid #007acc;
+      border-radius: 8px;
+      display: none;
+      font-family: monospace;
+      white-space: pre-line;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .tooltip {
+      border-bottom: 1px dashed #007acc;
+      cursor: help;
+      position: relative;
+    }
+
+    .tooltip:hover::after {
+      content: attr(data-tip);
+      position: absolute;
+      background: #333;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 6px;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: 0.9rem;
+    }
+
+    .mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #007acc;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="mode-toggle" onclick="toggleMode()">Toggle Mode</button>
+
+  <div class="glass">
+    <h1>JavaScript Comments</h1>
+    <p>Welcome to your interactive guide on <span class="tooltip" data-tip="JavaScript is used to create interactive effects within web browsers.">JavaScript</span> comments. Learn by exploring!</p>
+
+    <div class="button-group">
+      <button onclick="showTips()">Show Comment Examples</button>
+      <button onclick="showFact()">Random JS Fact</button>
+      <button onclick="nextLesson()">Next Lesson</button>
+    </div>
+
+    <div id="tipBox" class="tip-box"></div>
+    <div id="factBox" class="fact-box"></div>
+
+    <div id="lessonBox" class="fact-box" style="display:none;"></div>
+  </div>
+
+  <script>
+    const tips = `// This is a single-line comment
+
+/*
+This is a multi-line comment.
+Use it to explain complex logic
+or leave notes for yourself or others.
+*/`;
+
+    const facts = [
+      "JavaScript was created in just 10 days by Brendan Eich.",
+      "Despite the name, JavaScript is not related to Java.",
+      "You can write JavaScript directly in your HTML using <script> tags.",
+      "Modern websites use JS frameworks like React, Vue, and Angular.",
+      "JS can now be used on servers via Node.js."
+    ];
+
+    const lessons = [
+      "🔹 Single-line comments use // and are perfect for short notes.",
+      "🔹 Multi-line comments start with /* and end with */ — great for large explanations.",
+      "🔹 Always comment code to explain 'why', not just 'what'.",
+      "🔹 Comments are ignored by the browser, so they're safe to use.",
+      "🎉 You’ve completed the comment basics!"
+    ];
+
+    let lessonIndex = 0;
+
+    function showTips() {
+      const tipBox = document.getElementById('tipBox');
+      tipBox.style.display = 'block';
+      tipBox.textContent = tips;
+    }
+
+    function showFact() {
+      const factBox = document.getElementById('factBox');
+      const randomFact = facts[Math.floor(Math.random() * facts.length)];
+      factBox.style.display = 'block';
+      factBox.textContent = "💡 " + randomFact;
+    }
+
+    function nextLesson() {
+      const lessonBox = document.getElementById('lessonBox');
+      lessonBox.style.display = 'block';
+      lessonBox.textContent = lessons[lessonIndex];
+      lessonIndex = (lessonIndex + 1) % lessons.length;
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+
+</body>
+</html>
+
+
